@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Registro de Productos</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+<script>
+// Validaciones básicas en JavaScript
+function validarFormularioProducto() {
+    var nombre = document.getElementById('nombre').value.trim();
+    var precio = document.getElementById('precio').value.trim();
+    var stock = document.getElementById('stock').value.trim();
+    
+    if (nombre === "") {
+        alert("El nombre del producto es obligatorio.");
+        return false;
+    }
+    if (precio === "" || isNaN(precio) || parseFloat(precio) <= 0) {
+        alert("Ingrese un precio válido.");
+        return false;
+    }
+    if (stock === "" || isNaN(stock) || parseInt(stock) < 0) {
+        alert("Ingrese una cantidad de stock válida.");
+        return false;
+    }
+    return true;
+}
+</script>
+</head>
+<body>
+<h1>Registrar Producto</h1>
+<form action="insertar_producto.php" method="post" onsubmit="return validarFormularioProducto();">
+    <label>Nombre:</label><br>
+    <input type="text" name="nombre" id="nombre"><br><br>
+    <label>Descripción:</label><br>
+    <textarea name="descripcion" id="descripcion"></textarea><br><br>
+    <label>Precio:</label><br>
+    <input type="text" name="precio" id="precio"><br><br>
+    <label>Stock:</label><br>
+    <input type="text" name="stock" id="stock"><br><br>
+    <input type="submit" value="Registrar Producto">
+</form>
+</body>
+</html>
